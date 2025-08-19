@@ -40,9 +40,10 @@ DIESEL_FLAGS=""
 RUST_CARGO_BUILD_FLAGS="--release"
 echo "ENV DIR $ENV_DIR"
 echo "build flags = $(cat $ENV_DIR/RUST_CARGO_BUILD_FLAGS)"
-if [ -e "$ENV_DIR/RUST_CARGO_BUILD_FLAGS" ]; then
-    RUST_CARGO_BUILD_FLAGS="$(cat $ENV_DIR/RUST_CARGO_BUILD_FLAGS)"
-fi
+# if [ -e "$ENV_DIR/RUST_CARGO_BUILD_FLAGS" ]; then
+RUST_CARGO_BUILD_FLAGS="$(cat $ENV_DIR/RUST_CARGO_BUILD_FLAGS)"
+# fi
+echo "Building with flags $RUST_CARGO_BUILD_FLAGS"
 
 # Load our toolchain configuration, if any was specified.
 if [ -f "$BUILD_DIR/rust-toolchain" ]; then
