@@ -148,8 +148,8 @@ if [ $RUST_SKIP_BUILD -ne 1 ]; then
     cd "$BUILD_DIR/$BUILD_PATH"
     rm -rf target/
     RUST_CARGO_BUILD_FLAGS="$(cat "$ENV_DIR/RUST_CARGO_BUILD_FLAGS" 2>/dev/null || echo '--release')"
-    echo "build flags $RUST_CARGO_BUILD_FLAGS"
-    cargo build "$RUST_CARGO_BUILD_FLAGS"
+    echo "build flags ${RUST_CARGO_BUILD_FLAGS[@]}"
+    cargo build "${RUST_CARGO_BUILD_FLAGS[@]}"
     mkdir -p target/release
     find "$CARGO_TARGET_DIR/release" -maxdepth 1 -type f -executable -exec cp -a -t target/release {} \;
 else
